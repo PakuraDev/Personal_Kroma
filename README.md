@@ -7,6 +7,7 @@
 
 ## Links
 Figma: https://www.figma.com/design/HG9aubqUE12WJqi82wSSol/Nueva_pesta%C3%B1a?node-id=28-2&t=jgtf4yJgteRg4Rcb-1
+
 Página: https://personal-kroma.pages.dev/
 
 ---
