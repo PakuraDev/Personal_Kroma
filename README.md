@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Kroma Startpage</h1>
-  <img src="FIGMA - DISEÑOS/Pantalla base Minimalista.png" width="100%" />
+  <img src="Kroma Startpage.png" width="100%" />
 </div>
 
 ---
