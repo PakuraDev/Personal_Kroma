@@ -27,15 +27,19 @@ Uso linux, literalmente necesito un CLI donde vaya. Tonterías aparte, la barra 
 
 - `/hex [color en hex]`: Básicamente pones un color (sin #) y te lleva a ColorHunt. Ahora, antes de que venga alguien ha decir "Pero no hubiera sido mejor simplemente hacer aparecer un cuadrado o cambiar el color de algo a ese color en vez de ir a otra página?"... NO, DESDE LUEGO QUE NO. Esperad un momento porque me acabo de dar cuenta que me he confundido de página, me debería llevar a encycolorpedia y me he confundido de web. Madre de dios, y yo me vendo como diseñador técnico, que verguenza de profesional. Bueno, a lo que iba, si pusiera el color tal cual no tendría las variaciones de color, ni las conversiones a otros sistemas/espacios de color. En cualquier caso, voy a solucionarlo antes de que se me olvide.
 
+- `/svg [busqueda]`: Básicamente lo que pongas detrás será una busqueda de SVGREPO.
+
+- `/roll [nº máximo]`: Si tenéis un C2 en inglés podréis adivinar lo que hace está función solo por su nombre. Efectivamente, son dados. Si pones "/roll 100"  te dará un número del 1 al 100.
+
+- `/choose [opciones]`: Sé que no lo vais a adivinar, así que os lo explico. Pones las opciones que quieras separadas por comas, y elige una por tí. Por ejemplo, si pongo "/choose Er beti, Barça, Vardrid", el código eligirá al betis. En ese ejemplo es determinista porque el código tiene arte (Por si no lo habéis pilado, es una broma, elige uno de los 3 aleatoriamente).
+
+### Notepad lateral:
+
+
 Kroma no es solo un grid de enlaces; es un mini-entorno de productividad que respeta tu privacidad:
 
 *   🎨 **Motor de 5 Temas Dinámicos:** Cambia en caliente entre 5 identidades visuales completamente funcionales (*Minimalista, Hongdae, Kynesis, Genesis, Lucy*). Toda la interfaz mutará al instante usando variables semánticas CSS puras, sin parpadeos.
-*   🔍 **Barra de Búsqueda Inteligente (Smart CLI):** No sirve solo para Google. Soporta procesado matemático en tiempo real (`(4 + 8) * 2`) y comandos de terminal integrados:
-    *   `/yt [búsqueda]` - Busca rápido en YouTube.
-    *   `/hex [codigo]` - Busca la paleta en ColorHunt.
-    *   `/svg [nombre]` - Busca iconos en Lucide.
-    *   `/roll [máximo]` - Tira un dado aleatorio.
-    *   `/choose [A, B, C]` - Deja que Kroma elija por ti.
+
 *   📝 **Notepad Lateral:** Un gestor de notas integrado. Escribe, guarda o borra texto rápdio que no quieres perder. Se abre como una pestaña lateral y su estado se conserva tras cerrar el navegador.
 *   📊 **Telemetría en Vivo:** Una barra de estado inferior te informa constantemente sobre tu Sistema Operativo, uso de Memoria RAM, hilos de CPU disponibles, conectividad y Ping real.
 *   🖼️ **Decoradores Personalizables:** Dos marcos laterales dedicados al apartado visual. Sube ilustraciones desde tu disco duro (imágenes o SVGs en texto plano) y Kroma los insertará en tu pantalla base.
