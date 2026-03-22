@@ -5,13 +5,26 @@
 
 ---
 
-## 🌟 ¿Qué es Kroma?
+## Links
+Figma: https://www.figma.com/design/HG9aubqUE12WJqi82wSSol/Nueva_pesta%C3%B1a?node-id=28-2&t=jgtf4yJgteRg4Rcb-1
+Página: https://personal-kroma.pages.dev/
 
-Kroma es una experiencia de inicio de navegador (**Browser Startpage**) premium diseñada para reemplazar la clásica "Nueva Pestaña" vacía. Fue concebida bajo los principios de **minimalismo estético, alto rendimiento y control total del usuario**. 
+---
 
-A diferencia de otras soluciones que requieren cuentas online, bases de datos o servicios de terceros, Kroma funciona íntegramente en tu navegador. Todos tus datos, notas y configuraciones **se guardan localmente usando IndexedDB**.
+## Kroma (resumen)
+Kroma básicamente es una startpage (página de inicio) personalizada (y hecha a medida para mi) para reemplezar la clásica nueva pestaña de firefox, contra la que no tengo nada, pero seamos sinceros, es un infierno controlar los marcadores y accesos directos. Como explicaré próximamente, esto lo hago más para ganar tiempo, orden, y para que me mentir, para poner tremendo flex en el portfolio. 
 
-## ✨ Características Principales
+A nivel de diseño es minimalismo brutalista (que por si no os habéis dado cuenta ya, me gusta el brutalismo) con una UX diseñada para mi mismo, pero que otros power-users podrán disfrutar (aunque quizas quieran editar un poco el código). A nivel de código uso JS vanilla usando el modelo que sino me equivoco se llama "JAMstack". A nivel de host, volvemos al clásico, cloudflare pages, aunque hacerlo de está forma tiene una desventaja, y es los datos del wifi no se podrán mostrar (bueno, ni mostrar ni calcular), aunque mira, mejor que iniciar el servidor todos los días o hacer un servicio con systemmd que suficientes tengo.
+
+## Funciones
+Empezamoh. Si solo hubiera hecho una página vacía para poner enlaces (más o menos como mis ideas anteriores xd) no lo hubiera hecho.
+
+### Barra de búsqueda inteligente (CLI)
+Uso linux, literalmente necesito un CLI donde vaya. Tonterías aparte, la barra de busqueda no sirve solo para google, soporta comandos y lo más importante, operaciones matemáticas simples (con simple digo multiplicaciones, divisiones, sumas, restas y operaciones con parentesis). Vamos a ver los comandos (porque yo soy el primero al que se le olvidan lmao):
+
+- `/yt [busqueda]`: Básicamente lo que pongas detrás será una busqueda de youtube. Quería meterlo también de reddit o github, pero después me he dado cuenta de lo triste que son ambas cuentas, así que he preferido dejarlo fuera.
+
+- `/hex [color en hex]`: Básicamente pones un color (sin #) y te lleva a ColorHunt. Ahora, antes de que venga alguien ha decir "Pero no hubiera sido mejor simplemente hacer aparecer un cuadrado o cambiar el color de algo a ese color en vez de ir a otra página?"... NO, DESDE LUEGO QUE NO. Esperad un momento porque me acabo de dar cuenta que me he confundido de página, me debería llevar a encycolorpedia y me he confundido de web. Madre de dios, y yo me vendo como diseñador técnico, que verguenza de profesional. Bueno, a lo que iba, si pusiera el color tal cual no tendría las variaciones de color, ni las conversiones a otros sistemas/espacios de color. En cualquier caso, voy a solucionarlo antes de que se me olvide.
 
 Kroma no es solo un grid de enlaces; es un mini-entorno de productividad que respeta tu privacidad:
 
@@ -28,7 +41,11 @@ Kroma no es solo un grid de enlaces; es un mini-entorno de productividad que res
 *   📁 **Gestor de Datos Intuitivo:** Un panel de ajustes organizado bajo un estricto sistema de pestañas (Tab-System) de tres niveles jerárquicos: `Grupos -> Categorías -> Enlaces`. 
 *   💾 **Respaldos Offline (Import/Export):** Guarda absolutamente todos tus enlaces, notas, temas y decoradores en un único archivo JSON usando los comandos CLI `/export` o `/import`. Tu startpage es portátil.
 
-## 🛠️ Stack Tecnológico y Arquitectura
+## Diseño
+
+
+
+## Stack y Arquitectura
 
 Kroma es deliberadamente "Vanilla" para maximizar la velocidad y reducir dependencias, abrazando el modelo puro del **JAMstack**.
 
@@ -40,40 +57,4 @@ Kroma es deliberadamente "Vanilla" para maximizar la velocidad y reducir depende
     *   `ui/`: Interfaces de usuario y generadores de nodos en el DOM.
 *   **Persistencia (Almacenamiento):** IndexedDB, la API de almacenamiento del cliente de más bajo nivel y mayor capacidad del navegador. Se abstrae a través de un Singleton de promesas para garantizar asincronía segura e interrupciones nulas.
 
-## 🚀 Instalación y Despliegue
-
-### Uso Local
-
-Puesto que Kroma hace uso de ES Modules (`<script src="..." type="module">`), no puedes simplemente abrir `index.html` dándole doble clic (por restricciones de seguridad CORS de los navegadores locales).
-Debes servirlo mediante un servidor local simple:
-
-```bash
-# Entra en la carpeta del código
-cd Code
-
-# Usa Python (ya viene en Linux/Mac) para levantar un server rápido
-python3 -m http.server 8080
-
-# ¡Y visita http://localhost:8080 en tu navegador!
-```
-
-### Hosting Gratuito (Cloudflare Pages, Vercel, Netlify)
-
-Al ser una aplicación 100% estática basada en el cliente (Browser-centric), Kroma es el candidato perfecto para alojar en un CDN sin coste alguno.
-Por ejemplo, si conectas este repositorio a **Cloudflare Pages**:
-
-1. Ve a Cloudflare Pages y dale a "Create a Project".
-2. Conecta tu repositorio de GitHub.
-3. Configura el **Build output directory** explícitamente a: `Code` (o la ruta donde esté tu `index.html`).
-4. Deja en blanco los comandos de Build.
-5. ¡Listo! Cloudflare alojará la shell estática en sus bordes globales, y el almacenamiento seguirá sucediendo en el PC de quien visite la página.
-
-## 🔧 Personalización
-
-Nada más abrir la app, Kroma detectará que tu base de datos está vacía e "inyectará" la estructura base por defecto (junto con una nota de "Primer Uso" dándote la bienvenida).
-
-Para personalizar tus redes, foros y web favoritas:
-1. Haz clic en el engranaje inferior derecho (o navega al panel de ajustes).
-2. Añade un "Grupo" (ej: *Trabajo*, *Ocio*, *Desarrollo*). Cada Grupo aparece como un gran titular principal.
-3. Añade "Categorías" a ese grupo (ej: *Back-End*, *Documentación*).
-4. Dentro de cada categoría, tienes 4 slots para pegar tus nombres y URLs definitivas. ¡Dale a 'Guardar' y el motor reconstruirá toda tu página de inicio mágicamente!
+## Hosting
