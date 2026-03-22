@@ -34,17 +34,13 @@ Uso linux, literalmente necesito un CLI donde vaya. Tonterías aparte, la barra 
 - `/choose [opciones]`: Sé que no lo vais a adivinar, así que os lo explico. Pones las opciones que quieras separadas por comas, y elige una por tí. Por ejemplo, si pongo "/choose Er beti, Barça, Vardrid", el código eligirá al betis. En ese ejemplo es determinista porque el código tiene arte (Por si no lo habéis pilado, es una broma, elige uno de los 3 aleatoriamente).
 
 ### Notepad lateral:
+Como la cabeza no me da para todo, pensé en meter un bloc de notas lateral donde puedo guardar mis pensamientos antes de que se me olviden. Y ya está, no sé que más explicar de aquí, todos sabemos lo que es un bloc de notas, ¿No?
 
+### Personalización básica:
+Como buen usuario de linux que hace ricing (Si no sabéis lo que es, básicamente personalizar como un enfermo el apartado visual del sistema operativo), no podía permitirme tener una página de inicio tan triste, en blanco y negro, así que añadí 4 estilos más (Hongdae, Kynesis, Genesis, Lucy - Nombres y colores inspirados en ropas de Yuxus y en un personaje de anime. Lo sé, muy profesional) y la posibilidad de añadir imágenes o svgs (sé perfectamente que se considera al svg como imagen, pero recordemos que el gif también. El que categorizó ese día no estaba muy presente mentalmente) personalizadas a los laterales.
 
-Kroma no es solo un grid de enlaces; es un mini-entorno de productividad que respeta tu privacidad:
-
-*   🎨 **Motor de 5 Temas Dinámicos:** Cambia en caliente entre 5 identidades visuales completamente funcionales (*Minimalista, Hongdae, Kynesis, Genesis, Lucy*). Toda la interfaz mutará al instante usando variables semánticas CSS puras, sin parpadeos.
-
-*   📝 **Notepad Lateral:** Un gestor de notas integrado. Escribe, guarda o borra texto rápdio que no quieres perder. Se abre como una pestaña lateral y su estado se conserva tras cerrar el navegador.
-*   📊 **Telemetría en Vivo:** Una barra de estado inferior te informa constantemente sobre tu Sistema Operativo, uso de Memoria RAM, hilos de CPU disponibles, conectividad y Ping real.
-*   🖼️ **Decoradores Personalizables:** Dos marcos laterales dedicados al apartado visual. Sube ilustraciones desde tu disco duro (imágenes o SVGs en texto plano) y Kroma los insertará en tu pantalla base.
-*   📁 **Gestor de Datos Intuitivo:** Un panel de ajustes organizado bajo un estricto sistema de pestañas (Tab-System) de tres niveles jerárquicos: `Grupos -> Categorías -> Enlaces`. 
-*   💾 **Respaldos Offline (Import/Export):** Guarda absolutamente todos tus enlaces, notas, temas y decoradores en un único archivo JSON usando los comandos CLI `/export` o `/import`. Tu startpage es portátil.
+### Gestor de accesos directos:
+Para que sino hacer una página de inicio. Cada categoría tiene 4 links, cada grupo 4 categorías, y se pueden crear todos los grupos que queráis. Se editan desde ajustes, y los nombres son personalizables con doble click.
 
 ## Diseño
 
