@@ -1,6 +1,6 @@
 <div align="center">
-  <img src="FIGMA - DISEÑOS/Pantalla base Minimalista.png" width="100%" />
   <h1>Kroma Startpage</h1>
+  <img src="FIGMA - DISEÑOS/Pantalla base Minimalista.png" width="100%" />
   <p><b>Una página de inicio (startpage) de navegador bellamente diseñada, ultrarrápida y 100% local.</b></p>
 </div>
 
