@@ -33,6 +33,10 @@ Uso linux, literalmente necesito un CLI donde vaya. Tonterías aparte, la barra 
 
 - `/choose [opciones]`: Sé que no lo vais a adivinar, así que os lo explico. Pones las opciones que quieras separadas por comas, y elige una por tí. Por ejemplo, si pongo "/choose Er beti, Barça, Vardrid", el código eligirá al betis. En ese ejemplo es determinista porque el código tiene arte (Por si no lo habéis pilado, es una broma, elige uno de los 3 aleatoriamente).
 
+- `/export`: Sirve para exportar los datos (estilo seleccionado, grupos, categorías, enlances, etc...) guardados y potencialmente importarlos en otro lado.
+
+- `/import`: Sirve para importar el backup.
+
 ### Notepad lateral:
 Como la cabeza no me da para todo, pensé en meter un bloc de notas lateral donde puedo guardar mis pensamientos antes de que se me olviden. Y ya está, no sé que más explicar de aquí, todos sabemos lo que es un bloc de notas, ¿No?
 
@@ -42,20 +46,49 @@ Como buen usuario de linux que hace ricing (Si no sabéis lo que es, básicament
 ### Gestor de accesos directos:
 Para que sino hacer una página de inicio. Cada categoría tiene 4 links, cada grupo 4 categorías, y se pueden crear todos los grupos que queráis. Se editan desde ajustes, y los nombres son personalizables con doble click.
 
-## Diseño
 
+## Diseño
+Buenos, como ni el minimalismo ni el brutalismo dan mucho que hablar (tampoco mucho los estilos que he hecho), pasamos al UX. Como buen diseño está centrado en el usuario, y en este caso el usuario soy yo. Todo el diseño tiene un porqué, así que vamos a explorarlo:
+
+### Fecha y hora: 
+Aunque creo que la página de acceso de firefox tiene hora (o no, no me acuerdo. La de chrome por lo menos no tiene), la hora es algo que muy rara vez veo. Poner ambos me ahorra el tener que desplegar la barra superior del sistema. 
+
+### Barra inteligente: 
+Posiblemente lo mejor a nivel de UX, dado que me ahorra el tener que ir a una página para hacer una busqueda, decidir algo aleatorio, o calcular cuentas sencillas mientras que mantiene su utilidad original, buscar cosas. Si bien es cierto que la curva de aprendizaje para un usuario normal sería lo suficiente alta para que un usuario se frustre o tarde en acostumbrarse, para un power user o usuario de linux esto es una maravilla inimaginable.
+
+### Notepad lateral:
+Actualmente uso `https://onlinenotepad.org`, que si bien me gusta, el tener el notepad directamente en mi página de inicio me permite ahorrarme abrir y tener abierta una pestaña más, usarlo sin conexión, mayor velocidad y mayor privacidad (aunque para ser sinceros, con lo que guardo dentro, que básicamente son comandos o cosas que tengo que hacer más tarde, no creo que nadie les quiera comprar esos datos).
+
+### Barra inferior:
+Aquí tenemos la primera parte medio inutil. Decoraciones lo tenía que meter abajo, pero claro, que toda la barra inferior sea un unico botón es lo más antiestetico que podría ver en mi vida. Así que básicamente añadí cierta decoración:
+
+- Sistema operativo (esto básicamente es un flex moral).
+
+- batería: Aunque lo vaya a usar la mayoría del tiempo en un pc de sobremesa, para mi portatil (que obviamente tiene linux) esto viene genial.
+
+- CPU & RAM: Aquí me vaís a perdonar, pero como para la RAM había un pequeño conflicto de intereses entre mi sistema y un flatpack, decídi hardcodear la cantidad que tengo.
+
+- Wifi: Aunque desde la web solo funciona la API para saber si hay conexión (y no quería meter una API o Worker para calcular mi ping o descarga), para quien corra la página desde su sistema/servidor/minipc/cosa que pueda usar python) esto le funcionará bien.
+
+- Decoraciones: Y aquí viene el botón que activa o desactiva el modo decorar, el cual permite poner imágenes o svgs en los laterales del navegador para decorar. Decidí ponerlo aquí porque ajustes estaba saturado.
+
+### Ajustes:
+Un infierno tranquilo. Básicamente tenemos el selector de tema, y el gestor de grupos, categorías y links. Desde allí se puede configurar todo de forma intuitiva (basado en que mi madre sabe usarlo).
 
 
 ## Stack y Arquitectura
+Como no es raro ver en mi, mi odio por el bloatware y ciertos frameworks (y digo ciertos porque si, respeto a Astro), me ha hecho hacer el proyecto en HTML, CSS y JS vanilla. He reutilizado un poco el wrapper de IndexedDB (porque, con todo el respeto, quien hizo la API de IndexedDB odiaba su trabajo) y bus de Aerko, combinado con el render de openflow para agilizar, aunque son totalmente nuevos. Como dije, creo que esto se llama JAMstack, que es Javascript, API, Marcado (html y css no son lenguajes de programación, sino de marcado), aunque no estoy seguro. La verdad es que las etiquetas nunca me han gustado mucho. 
 
-Kroma es deliberadamente "Vanilla" para maximizar la velocidad y reducir dependencias, abrazando el modelo puro del **JAMstack**.
+En cualquier caso, como me gustan las estructuras modulares se dividió el css en 5 archivos, cada uno con una utilidad, y el la lógica (js) en 3 carpetas:
 
-*   **Estructura:** HTML5 Semántico.
-*   **Estilos:** CSS3 nativo construido sobre un potente sistema de variables dinámicas (`CSS/variables.css`). Se evitan mutaciones costosas en el DOM; un simple cambio de clase en el `<body>` cascada automáticamente a todos los componentes.
-*   **Lógica Funcional:** JavaScript Moderno (ES6 Modules). La arquitectura está firmemente segmentada en 3 capas lógicas (sin espagueti):
-    *   `core/`: Subsistemas base (Base de datos IDB, Event Bus Pub/Sub, Gestor de Telemetría).
-    *   `logic/`: Controladores de estado (SearchEngine estricto, parseo y encoding de Decoradores, File System).
-    *   `ui/`: Interfaces de usuario y generadores de nodos en el DOM.
-*   **Persistencia (Almacenamiento):** IndexedDB, la API de almacenamiento del cliente de más bajo nivel y mayor capacidad del navegador. Se abstrae a través de un Singleton de promesas para garantizar asincronía segura e interrupciones nulas.
+- `core/`: Base de datos, bus de eventos, gestor de telemtría (tranquilos, la telemetría solo es una forma preocupante de referirme a las decoraciones útiles)
 
-## Hosting
+- `logic/`: los controladores de estado, como el sistema de busqueda, parseo, etc...
+
+- `ui/`: La interfaz del usuario que se rendiriza via JS.
+
+Y para el almacenamiento, como el 99% de las personas que saben lo que es IndexedDB habrán adivinado, se usa IndexedDB para que los datos persistan en el tiempo. 
+
+
+## Hosting y licencia.
+Está hosteado en cloudflare pages sin ningún dominio. El que quiera puede hacer un fork y hostearlo por su cuenta, modificarlo o cualquier cosa, es de código abierto. Gracias por leer esto y un saludo <3
