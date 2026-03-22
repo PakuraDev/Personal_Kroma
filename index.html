@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kroma Startpage</title>
+
+    <!-- Google Fonts: JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Dependencies -->
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/variables.css">
+    <link rel="stylesheet" href="CSS/typography.css">
+    <link rel="stylesheet" href="CSS/layout.css">
+    <link rel="stylesheet" href="CSS/components.css">
+</head>
+<body class="theme-minimalista">
+    <!-- Contenedor Base Responsivo (Computer-first) -->
+    <main id="app-container" class="app-container">
+        
+        <!-- Barra Lateral Izquierda -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-top sidebar-btn-create text-normal">+</div>
+            <div id="notes-list" class="sidebar-notes">
+                <!-- Nodos inyectados por render.js (BD Notepads) -->
+            </div>
+            <div class="sidebar-bottom sidebar-btn-settings text-normal">
+                <!-- Settings SVG Icon -->
+                <div class="svg-decorations icon-settings"></div>
+            </div>
+        </aside>
+
+        <!-- Notepad Editor Panel -->
+        <article id="notepad-panel" class="notepad-panel">
+            <div class="notepad-header">
+                <span class="text-destacado" id="notepad-symbol">?</span>
+                <input type="text" id="notepad-title" class="text-destacado" placeholder="Título..." value="Primer uso">
+            </div>
+            <div class="notepad-body">
+                <textarea id="notepad-content" class="text-pequeno" placeholder="Empieza a escribir..." spellcheck="false" autofocus>Buenas! Si estas aqui, significa que estas usando mi app. Te voy a explicar como funciona:
+
+Primero, en la barra lateral tienes las notas, aqui puedes crear, borrar y editar notas en cualquier momento.
+
+Abajo tienes el boton de ajustes, donde podras editar el estilo, links, y otras cosas.
+
+en la barra inferior encontraras tu sistema operativo, bateria, informacion de tu pc, wifi, y el boton de decoraciones, donde podras configurar las decoraciones laterales.
+
+Poco mas hay que explicar, salvo los comandos de busqueda. Pero esos los he dejado en github, lo siento!</textarea>
+            </div>
+            <div class="notepad-actions">
+                <button class="btn-primary text-normal" id="btn-save-note">Guardar</button>
+                <button class="btn-secondary text-normal" id="btn-delete-note">Borrar</button>
+            </div>
+        </article>
+
+        <!-- Bloque Derecho -->
+        <section class="main-wrapper">
+            
+            <!-- VISTA 1: PRINCIPAL -->
+            <div id="view-main" class="view-container active-view">
+            <!-- Pantalla Principal -->
+            <div id="main-screen" class="main-screen">
+                <div class="decorator-frame decorator-left" id="decorator-left">
+                     <svg class="decorator-placeholder-svg" xmlns="http://www.w3.org/2000/svg" width="103" height="116" fill="none"><path stroke="currentColor" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M98.48 61.45a3.015 3.015 0 0 1 3.02 3.009v40.118c0 5.355-4.357 9.695-9.732 9.695H11.232c-5.375 0-9.732-4.34-9.732-9.695V64.459a3.015 3.015 0 0 1 3.02-3.01 3.015 3.015 0 0 1 3.02 3.01v40.118a3.684 3.684 0 0 0 3.692 3.677h80.536a3.684 3.684 0 0 0 3.692-3.677V64.459a3.015 3.015 0 0 1 3.02-3.01M49.364 2.153a3.03 3.03 0 0 1 4.271 0L80.481 28.9a3 3 0 0 1 0 4.255 3.03 3.03 0 0 1-4.27 0L54.52 11.544v72.974a3.015 3.015 0 0 1-3.02 3.009 3.015 3.015 0 0 1-3.02-3.01V11.546l-21.69 21.61a3.03 3.03 0 0 1-4.271 0 3 3 0 0 1 0-4.256z"/></svg>
+                </div>
+                
+                <!-- Frame Central Fijo (800px) -->
+                <div class="center-content">
+                    
+                    <!-- Fecha y hora (Sprint 5) -->
+                    <div class="datetime-container">
+                        <h1 id="clock-display" class="text-hora">10:00</h1>
+                        <p id="date-display" class="text-normal">Viernes 20 / Marzo 2026</p>
+                    </div>
+
+                    <!-- Barra de Búsqueda (Sprint 5) -->
+                    <div class="search-bar-container">
+                        <input type="text" id="search-input" class="search-input text-normal" placeholder="Buscar..." autocomplete="off" spellcheck="false" autofocus>
+                        <div class="search-icon">
+                            <div class="icon-search"></div>
+                        </div>
+                    </div>
+
+                    <!-- Grid de links hidradato dinámicamente -->
+                    <div class="shortcuts-container">
+                        <div class="groups-list" id="main-groups-list"></div>
+                        <div class="categories-container" id="main-categories-container"></div>
+                    </div>                </div>
+
+                <div class="decorator-frame decorator-right" id="decorator-right">
+                     <svg class="decorator-placeholder-svg" xmlns="http://www.w3.org/2000/svg" width="103" height="116" fill="none"><path stroke="currentColor" stroke-dasharray="4 4" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M98.48 61.45a3.015 3.015 0 0 1 3.02 3.009v40.118c0 5.355-4.357 9.695-9.732 9.695H11.232c-5.375 0-9.732-4.34-9.732-9.695V64.459a3.015 3.015 0 0 1 3.02-3.01 3.015 3.015 0 0 1 3.02 3.01v40.118a3.684 3.684 0 0 0 3.692 3.677h80.536a3.684 3.684 0 0 0 3.692-3.677V64.459a3.015 3.015 0 0 1 3.02-3.01M49.364 2.153a3.03 3.03 0 0 1 4.271 0L80.481 28.9a3 3 0 0 1 0 4.255 3.03 3.03 0 0 1-4.27 0L54.52 11.544v72.974a3.015 3.015 0 0 1-3.02 3.009 3.015 3.015 0 0 1-3.02-3.01V11.546l-21.69 21.61a3.03 3.03 0 0 1-4.271 0 3 3 0 0 1 0-4.256z"/></svg>
+                </div>
+            </div>
+
+            <!-- Barra Inferior -->
+            <footer id="status-bar" class="status-bar">
+                <div class="status-item text-normal" id="status-os">--</div>
+                <div class="status-item text-normal" id="status-battery">--%</div>
+                <div class="status-item text-normal" id="status-hardware">-- Hilos | --GB RAM</div>
+                <div class="status-item text-normal" id="status-network">-- | -- Mbps | Ping: --ms</div>
+                <div class="status-item-decorations text-normal" id="btn-decorations">
+                    <span>Decoraciones</span>
+                    <div id="icon-decorations" class="svg-decorations icon-not-select"></div>
+                </div>
+            </footer>
+            </div> <!-- FIN VISTA 1 -->
+
+            <!-- VISTA 2: AJUSTES (Sprint 9) -->
+            <div id="view-settings" class="view-container">
+                <div class="settings-screen">
+                    <div class="settings-top">
+                        
+                        <!-- Engine Temas -->
+                        <div class="settings-styles">
+                            <span class="text-destacado">> Estilos</span>
+                            <div class="styles-list">
+                                <div class="style-preview" data-theme="theme-minimalista" style="background-image: url('IMAGES/Preview_Minimalista.png')"></div>
+                                <div class="style-preview" data-theme="theme-hongdae" style="background-image: url('IMAGES/Preview_Hongdae.png')"></div>
+                                <div class="style-preview" data-theme="theme-kynesis" style="background-image: url('IMAGES/Preview_Kynesis.png')"></div>
+                                <div class="style-preview" data-theme="theme-genesis" style="background-image: url('IMAGES/Preview_Genesis.png')"></div>
+                                <div class="style-preview" data-theme="theme-lucy" style="background-image: url('IMAGES/Preview_Lucy.png')"></div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Data Config (Sprint 10) -->
+                        <div class="settings-data-config">
+                            <span class="text-destacado">> Grupos - Categorias - links</span>
+                            
+                            <!-- Lista Global de Grupos -->
+                            <div class="config-groups-list" id="config-groups-list">
+                                <!-- Nodos listados y levantados dinámicamente por configEditor.js -->
+                            </div>
+                            
+
+
+                        </div>
+
+                    </div>
+                    
+                    <!-- Acciones -->
+                    <div class="settings-actions">
+                        <button class="btn-secondary text-normal" id="btn-settings-cancel">Salir sin guardar</button>
+                        <button class="btn-primary text-normal" id="btn-settings-save">Guardar</button>
+                    </div>
+                </div>
+            </div> <!-- FIN VISTA 2 -->
+
+        </section>
+    </main>
+
+    <script src="JS/main.js" type="module"></script>
+</body>
+</html>

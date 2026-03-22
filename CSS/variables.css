@@ -1,0 +1,112 @@
+/*
+ * KROMA - Sistema de Temas y Variables
+ * Arquitectura basada en variables CSS semánticas (--color-*)
+ * Inyectando el tema a nivel de clase (.theme-xxx) sobre el <body>
+ */
+
+:root {
+  /* Tiempos de transición globales para cambio de temas suave */
+  --transition-theme: 0.2s ease-in-out;
+}
+
+/* 
+ * 1. TEMA MINIMALISTA (Base por defecto)
+ * Blanco: #FFF | Negro: #1A1A1A | Gris: #F3F3F3 | Opacidad: rgba(26, 26, 26, 0.75)
+ */
+.theme-minimalista {
+  /* Paleta cruda */
+  --palette-blanco: #FFF;
+  --palette-negro: #1A1A1A;
+  --palette-gris: #F3F3F3;
+  --palette-op-75: rgba(26, 26, 26, 0.75);
+
+  /* Variables Semánticas Universales */
+  --color-bg-base: var(--palette-gris);
+  --color-bg-content: var(--palette-blanco);
+  --color-border: var(--palette-negro);
+  --color-text-main: var(--palette-negro);
+  --color-text-muted: var(--palette-op-75);
+  
+  /* Fondos interactivos / Botones primarios */
+  --color-bg-btn-primary: var(--palette-negro);
+  --color-text-btn-primary: var(--palette-blanco);
+}
+
+/* 
+ * 2. TEMA HONGDAE
+ * Marrón: #2F2826 | Beige: #D7D2B4 | Marroncito: #3F3934 | Opacidad: rgba(215, 210, 180, 0.75)
+ */
+.theme-hongdae {
+  --palette-marron: #2F2826;
+  --palette-beige: #D7D2B4;
+  --palette-marroncito: #3F3934;
+  --palette-op-75: rgba(215, 210, 180, 0.75);
+
+  --color-bg-base: var(--palette-marroncito); 
+  --color-bg-content: var(--palette-marron); 
+  --color-border: var(--palette-beige);
+  --color-text-main: var(--palette-beige);
+  --color-text-muted: var(--palette-op-75);
+
+  --color-bg-btn-primary: var(--palette-beige);
+  --color-text-btn-primary: var(--palette-marron);
+}
+
+/* 
+ * 3. TEMA KYNESIS
+ * Pizarra: #232D33 | Rojo pastel: #C04850 | Rosa beige: #333036 | Opacidad: rgba(192, 72, 80, 0.75)
+ */
+.theme-kynesis {
+  --palette-pizarra: #232D33;
+  --palette-rojo: #C04850;
+  --palette-rosa: #333036;
+  --palette-op-75: rgba(192, 72, 80, 0.75);
+
+  --color-bg-base: var(--palette-rosa);
+  --color-bg-content: var(--palette-pizarra);
+  --color-border: var(--palette-rojo);
+  --color-text-main: var(--palette-rojo);
+  --color-text-muted: var(--palette-op-75);
+
+  --color-bg-btn-primary: var(--palette-rojo);
+  --color-text-btn-primary: var(--palette-rosa);
+}
+
+/* 
+ * 4. TEMA GENESIS
+ * Negro: #1A1A1A | Verde Ácido: #CCFF00 | Oliva: #2B3017 | Opacidad: rgba(204, 255, 0, 0.75)
+ */
+.theme-genesis {
+  --palette-negro: #1A1A1A;
+  --palette-verde: #CCFF00;
+  --palette-oliva: #2B3017;
+  --palette-op-75: rgba(204, 255, 0, 0.75);
+
+  --color-bg-base: var(--palette-oliva);
+  --color-bg-content: var(--palette-negro);
+  --color-border: var(--palette-verde);
+  --color-text-main: var(--palette-verde);
+  --color-text-muted: var(--palette-op-75);
+
+  --color-bg-btn-primary: var(--palette-verde);
+  --color-text-btn-primary: var(--palette-negro);
+}
+
+/* 
+ * 5. TEMA LUCY
+ * Amarillo: #FEE11A | Negro: #1A1A1A | Opacidad: rgba(254, 225, 26, 0.75)
+ */
+.theme-lucy {
+  --palette-amarillo: #FEE11A;
+  --palette-negro: #1A1A1A;
+  --palette-op-75: rgba(254, 225, 26, 0.75);
+
+  --color-bg-base: var(--palette-negro) url('../IMAGES/Fondo_Lucy.png') center / cover no-repeat;
+  --color-bg-content: transparent;
+  --color-border: var(--palette-amarillo); 
+  --color-text-main: var(--palette-amarillo);
+  --color-text-muted: var(--palette-op-75);
+
+  --color-bg-btn-primary: var(--palette-amarillo);
+  --color-text-btn-primary: var(--palette-negro);
+}

@@ -1,0 +1,54 @@
+/*
+ * KROMA - Modern Reset
+ * Garantizando consistencia "Pixel-Perfect" en cualquier navegador
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-bg-base);
+  
+  /* Transición general para suavizar los saltos entre temas visuales */
+  transition: background-color var(--transition-theme),
+              color var(--transition-theme);
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}

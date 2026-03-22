@@ -1,0 +1,60 @@
+/*
+ * KROMA - Tipografía
+ * Especificaciones extraídas de Fundations.md
+ */
+
+:root {
+  --font-family-base: "JetBrains Mono", monospace;
+}
+
+/* Base setup for inheritance */
+body {
+  font-family: var(--font-family-base);
+  color: var(--color-text-main);
+}
+
+/*
+ * Tipografía: Hora
+ */
+.text-hora {
+  font-family: var(--font-family-base);
+  font-size: 92px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/*
+ * Tipografía: Texto normal
+ * Se usa textualmente en casi todo (fechas, links).
+ */
+.text-normal {
+  font-family: var(--font-family-base);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/*
+ * Tipografía: Texto destacado (negrita)
+ */
+.text-destacado {
+  font-family: var(--font-family-base);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+/*
+ * Tipografía: Texto pequeño
+ * Usado solo en el contenido expandido de los notepads.
+ */
+.text-pequeno {
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

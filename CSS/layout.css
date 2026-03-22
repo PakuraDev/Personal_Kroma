@@ -1,0 +1,120 @@
+/*
+ * KROMA - Layout Global (Sprint 4)
+ * Patrón Computer-First y flexbox asimétrico de grandes bloques.
+ * Rango responsive vertical: 1920x1080 -> 1920x864.
+ */
+
+/* 1. Contenedor Maestro */
+.app-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    /* Rango vertical: Se asegura que se adapte al viewport del nav pero sin romper los mínimos */
+    height: 100vh;
+    min-height: 864px;
+    max-height: 1080px;
+    max-width: 1920px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    background: var(--color-bg-base);
+}
+
+/* 2. Barra Lateral */
+.sidebar {
+    display: flex;
+    width: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    align-self: stretch;
+    /* Sin borde derecho global para permitir que los "notepads" activos puedan fundirse mediante CSS */
+}
+
+/* Espacio dinámico para notas */
+.sidebar-notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+/* Si está vacío, un pseudo-elemento rellena el fondo y le da los bordes nativos */
+.sidebar-notes:empty::before {
+    content: '';
+    display: block;
+    flex: 1 0 0;
+    align-self: stretch;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* 3. Wrapper Derecho (Pantalla + Status Bar) */
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+/* 4. Pantalla Principal (Área de Contenido) */
+.main-screen {
+    display: flex;
+    padding: 48px;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex: 1 0 0;
+    align-self: stretch;
+    background: var(--color-bg-content);
+}
+
+/* Paneles Decorativos de Imágenes/SVGs */
+.decorator-frame {
+    flex: 1 0 0;
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Columna Estática del Centro (Reloj, Búsqueda y Grid) */
+.center-content {
+    display: flex;
+    width: 800px;
+    padding-bottom: 60px;
+    flex-direction: column;
+    justify-content: flex-end; /* Alineados hacia abajo para respetar el peso del layout */
+    align-items: center;
+    gap: 64px;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+/* 5. Barra Inferior de Estado */
+.status-bar {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    /* gap = -1px para solapar borders internos cuando se definan, tal como exige Figma */
+    gap: -1px;
+    align-self: stretch;
+    border-top: 1px solid var(--color-border);
+}
+
+/* 6. Enrutamiento de Vistas SPA (Sprint 9) */
+.view-container {
+    display: none;
+    flex-direction: column;
+    flex: 1 0 0;
+    align-self: stretch;
+    overflow: hidden;
+}
+
+.view-container.active-view {
+    display: flex;
+}
