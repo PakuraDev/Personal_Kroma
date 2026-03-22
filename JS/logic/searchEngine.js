@@ -47,7 +47,7 @@ class SearchEngine {
             }
         }
 
-        // https://encycolorpedia.es/1a1a1a (corregido)
+        // Encycolorpedia (corregido)
         if (lowerQuery.startsWith('/hex ')) {
             let hex = query.substring(5).trim();
             if (hex.startsWith('#')) hex = hex.substring(1); 
@@ -56,11 +56,11 @@ class SearchEngine {
             }
         }
 
-        // Lucide SVG
+        // SVGREPO
         if (lowerQuery.startsWith('/svg ')) {
             const searchTerm = query.substring(5).trim();
             if (searchTerm) {
-                return { action: 'redirect', payload: `https://lucide.dev/icons/?search=${encodeURIComponent(searchTerm)}` };
+                return { action: 'redirect', payload: `https://www.svgrepo.com/vectors/${encodeURIComponent(searchTerm)}/` }; 
             }
         }
 
