@@ -47,12 +47,12 @@ class SearchEngine {
             }
         }
 
-        // Colorhunt
+        // https://encycolorpedia.es/1a1a1a (corregido)
         if (lowerQuery.startsWith('/hex ')) {
             let hex = query.substring(5).trim();
             if (hex.startsWith('#')) hex = hex.substring(1); 
             if (hex) {
-                return { action: 'redirect', payload: `https://colorhunt.co/color/${encodeURIComponent(hex)}` };
+                return { action: 'redirect', payload: `https://encycolorpedia.es/${encodeURIComponent(hex)}` }; 
             }
         }
 
